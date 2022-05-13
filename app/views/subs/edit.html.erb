@@ -1,0 +1,33 @@
+
+
+<h1>Edit your Sub</h1>
+
+<form action="<%=subs_url%>" method="post">
+            <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+
+      <input type="hidden" name="sub[moderator_id]" value="<%=current_user.id%>">
+      <input type="hidden" name="sub[title]" value="<%=@sub.title%>">
+
+      <h2>r/<%=@sub.title%></h2>
+      <br>
+
+      <label for="description">Description
+      <textarea name="sub[description]"><%=@sub.description%></textarea>
+      </label>
+
+      <br>
+
+
+      <label for="image">Image </label>
+      <input type="text" name="sub[img]" value="<%=@sub.img%>">
+
+      <br>
+
+      <button>Submit</button>
+
+</form>
+<br>
+<form action="<%=sub_url(@sub)%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete Sub</button>
+</form>

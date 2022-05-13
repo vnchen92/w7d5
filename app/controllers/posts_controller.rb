@@ -16,7 +16,6 @@ class PostsController < ApplicationController
       def create 
             @post = Post.new(post_params)
             if @post.save
-                  login!(@post)
                   redirect_to post_url(@post)
             else 
                   flash.now[:errors] = @post.errors.full_messages

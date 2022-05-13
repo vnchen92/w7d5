@@ -3,7 +3,7 @@ class SubsController < ApplicationController
       before_action :is_moderator?, only: [:edit, :update]
 
       def is_moderator?
-            if !current_user.subs.where('id = (?)', params[:id]).exists?
+            if !current_user.moderated_subs.where('id = (?)', params[:id]).exists?
                   redirect_to subs_url
             end
       end

@@ -16,10 +16,10 @@ u5 = User.create!(username: 'jonathonbutt', password: 'abcd', birthdate: '2004/0
 
 
 Sub.destroy_all
-s1 = Sub.create!(title: 'r/hats', moderator_id: u1.id, description: 'Fashion discussion')
-s2 = Sub.create!(title: 'r/bloomberg', moderator_id: u2.id, description: 'I am outtie')
-s3 = Sub.create!(title: 'r/yall', moderator_id: u1.id, description: 'Southern slang and other fun experiences')
-s4 = Sub.create!(title: 'r/TA_Tips', moderator_id: u5.id, description: 'Tips for new TAs please give them to me I am new')
+s1 = Sub.create!(title: 'hats', moderator_id: u1.id, description: 'Fashion discussion', img: 'https://www.iconpacks.net/icons/2/free-hat-icon-1866-thumb.png')
+s2 = Sub.create!(title: 'bloomberg', moderator_id: u2.id, description: 'I am outtie', img: 'https://img.utdstc.com/icon/152/167/152167442b09fe441a645e63a86c179bfd54c9e64a008c1f7433c6f51726c06d:200')
+s3 = Sub.create!(title: 'yall', moderator_id: u1.id, description: 'Southern slang and other fun experiences', img: 'https://cdn1.iconfinder.com/data/icons/wild-west-24/64/hat-western-cowboy-512.png')
+s4 = Sub.create!(title: 'TA_Tips', moderator_id: u5.id, description: 'Tips for new TAs please give them to me I am new', img: 'https://icons-for-free.com/download-icon-glasses+male+man+person+user+icon-1320196226727205694_512.png')
 
 Post.destroy_all
 s1_p1 = Post.create!(title: 'My favorite Hat', author_id: u1.id, sub_id: s1.id, url: 'https://cdn10.bigcommerce.com/s-wskkt5d/products/1821/images/8124/whiteley-womens-white-and-black-wide-brim-kentucky-derby-hat-with-bow-655-352__51059.1594546591.1280.1280.jpg?c=2') 

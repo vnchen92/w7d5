@@ -23,3 +23,8 @@
 
       <button>Save Changes</button>
 </form>
+
+<form action="<%=post_url(@sub)%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>Delete post</button>
+</form>

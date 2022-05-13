@@ -1,0 +1,42 @@
+
+<div class="clearfix"></div>
+<header class='sub-body'>
+
+      <span class="sub-left-col">
+            <img src="<%=@sub.img%>" id="sub_page_pic">
+            <h2>r/<%=@sub.title%></h2>
+            <p><%=@sub.description%></p>
+
+            <form action="<%=new_post_url%>" method="get">
+                  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                  <button>Post a thread</button>
+            </form>
+
+            
+            <% if @sub.moderator_id == current_user.id %>                 
+                  <form action="<%=sub_url(@sub)%>/edit" method="get">
+                        <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                        <button>Edit Subreddit</button>
+                  </form>
+            <% end %>
+
+      </span>
+
+      <span class="sub-right-col">
+            <ul>
+                  <% @sub.posts.each do |post| %>
+                        <li class="sub_posts">
+                              <% if post.url %>
+                                    <img src="<%=post.url%>" id="post_thumbnail">
+                              <%else%>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" id="post_thumbnail">
+                              <% end %>
+                              <a href="<%=post_url(post)%>"><%=post.title%></a>
+                              <br>
+                        </li>
+                  <% end %>
+            </ul>
+      </span>
+</header>
+
+

@@ -1,0 +1,18 @@
+
+<h1>All the Subs</h1>
+
+<ul>
+      <% @subs.each do |sub| %>
+            <li>
+                  <img src="<%=sub.img%>" id="subreddit_pic">
+                  <a href="<%=sub_url(sub)%>">r/<%=sub.title%></a>
+            </li>
+      <% end %>
+</ul>
+
+<br>
+
+<form action="<%=subs_url%>/new" method="get">
+      <button>Create a Subreddit</button>
+</form>
+

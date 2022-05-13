@@ -9,49 +9,56 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-        <p><%= flash[:errors] if flash[:errors]%></p>
+    <p><%= flash[:errors] if flash[:errors]%></p>
+    <header class="main-nav">
+      
+      <nav class="main-nav-left">
+          <ul>
+                  <li>
+                      <p class="nav-icon"><a href="<%=users_url%>">All Users</a></p>
+                  </li>
 
-        <ul>
-              <li>
-                  <a href="<%=users_url%>">All Users</a>
-              </li>
+                  <li>
+                     <p class="nav-icon"><a href="<%=subs_url%>">All Subs</a></p>
+                  </li>
 
-              <li>
-                  <%if current_user %>
-                    <p><%= current_user.username %></p>      
-                  <% end %>
-              </li>
+          </ul>
+        </nav>
+        <nav class="main-nav-right">
+          <ul>                     
+              <%if current_user %>
+                        <li>
+                          <h1><%= current_user.username %></h1>
+                        </li>  
+              <% end %>
+              <%if current_user %>
+                <li>
+                    <form action="<%=session_url%>" method= "post">
+                      <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                      <input type="hidden" name = "_method" value= "delete">
+                      <button>Log-out</button>
+                  </form>
+                </li>
+              <% else %>
+            
+                <li>
+                    <form action="<%=new_session_url%>" method= "get">
+                        <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                        <%# <input type="hidden" name = "_method" value= "delete"> %>
+                        <button>Log In</button>
+                    </form>
+                </li>
 
-          <%if current_user %>
-            <li>
-                <form action="<%=session_url%>" method= "post">
-                  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
-                  <input type="hidden" name = "_method" value= "delete">
-                  <input type="submit" value="Log-out">
-              </form>
-            </li>
-          <% else %>
-        
-            <li>
-                <form action="<%=new_session_url%>" method= "get">
-                    <input type="hidden" name="authenticity_token" value="form_authenticity_token">
-                    <%# <input type="hidden" name = "_method" value= "delete"> %>
-                    <input type="submit" value="Log-in">
-                </form>
-            </li>
-
-            <li>
-              <form action="<%=new_user_url%>" method= "get">
-                  <%# <input type="hidden" name = "_method" value= "delete"> %>
-                  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
-                  <input type="submit" value="Sign-Up">
-              </form>      
-            </li>
-          <% end%>
-      </ul>
+                <li>
+                  <form action="<%=new_user_url%>" method= "get">
+                      <%# <input type="hidden" name = "_method" value= "delete"> %>
+                      <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                      <button>Sign-Up</button>
+                  </form>      
+                </li>
+              <% end%>
+          </ul>
+      </nav>
     </header>
     <%= yield %>
-  </body>
 </html>
