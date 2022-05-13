@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
-      before_action :require_logged_in, only: [:new, :create]
+      before_action :require_logged_in, only: [:edit, :update, :destroy, :create, :new, :create]
       before_action :is_author_or_moderator?, only: [:edit, :update, :destroy]
-
+      helper_method :is_author_or_moderator?
 
       def is_author_or_moderator?
             @p = Post.find(params[:id])
-            redirect_to subs_url if @p.author_id != current_user.id || @p.sub.moderator_id != current_user.id
+            redirect_to subs_url if @p.nil? || @p.author_id != current_user.id || @p.sub.moderator_id != current_user.id
       end
 
       def show

@@ -1,10 +1,12 @@
 <h1><%=@post.title%></h1>
 <br>
+
+<img src="<%=@post.url%>" id="post_picture">
 <a href="<%=@post.url%>">Link To</a>
 <br>
 <p><%=@post.content%></p>
 
-<%if @post.is_author_or_moderator?%>
+<%if !current_user.nil? && current_user.id == @post.author_id || current_user.id == @post.sub.moderator_id %>
       <form action="<%=post_url(@post)%>/edit" method="get">
             <button>Edit</button>
       </form>
