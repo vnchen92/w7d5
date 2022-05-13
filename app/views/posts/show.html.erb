@@ -1,0 +1,12 @@
+<h1><%=@post.title%></h1>
+<br>
+<a href="<%=@post.url%>">Link To</a>
+<br>
+<p><%=@post.content%></p>
+
+<%if @post.is_author_or_moderator?%>
+      <form action="<%=post_url(@post)%>/edit" method="get">
+            <button>Edit</button>
+      </form>
+<%end%>
+

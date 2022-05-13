@@ -2,11 +2,18 @@
 
 <form action="<%=posts_url%>" method="post">
       <input type="hidden" name="authenticity_token" value="form_authenticity_token">
-      <input type="hidden name="post[author_id]" value="<%= current_user.id %>">
+      <input type="hidden" name="post[author_id]" value="<%= current_user.id %>">
 
       <label>Posting to
-        <>
+
       </label>
+      <select name="post[sub_id]">    
+            <option></option>          
+            <% Sub.all.each do |sub| %>
+                  <option value="<%=sub.id%>"><%=sub.title%></option>
+            <% end %>
+      </select>
+      <br>
       
       <label for="title">Title</label>
       <input type="text" name="post[title]" value="">
