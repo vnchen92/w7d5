@@ -5,10 +5,11 @@
 #  id              :bigint           not null, primary key
 #  username        :string           not null
 #  password_digest :string           not null
-#  picture_url     :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  picture_url     :string           default("https://cdn-icons-png.flaticon.com/512/1384/1384067.png"), not null
+#  birthdate       :date             default(Sat, 01 Jan 2000), not null
 #
 
 require 'bcrypt'
@@ -23,6 +24,10 @@ class User < ApplicationRecord
     validates :birthdate, presence: true
     before_validation :ensure_session_token
     #spire
+
+    has_many :moderated_subs, class_name: :Sub, foreign_key: :moderator_id
+
+    has_many :posts, class_name: :Post, foreign_key: :author_id
 
     def self.find_by_credentials(username, password)
         @u = User.find_by(username: username)
