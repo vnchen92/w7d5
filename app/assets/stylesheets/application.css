@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+ #profile_pic {
+       width: 60px;
+       height: auto;
+ }
+
+ li {
+       list-style: none;
+ }

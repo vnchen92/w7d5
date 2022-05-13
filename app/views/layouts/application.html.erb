@@ -10,6 +10,48 @@
   </head>
 
   <body>
+    <header>
+        <p><%= flash[:errors] if flash[:errors]%></p>
+
+        <ul>
+              <li>
+                  <a href="<%=users_url%>">All Users</a>
+              </li>
+
+              <li>
+                  <%if current_user %>
+                    <p><%= current_user.username %></p>      
+                  <% end %>
+              </li>
+
+          <%if current_user %>
+            <li>
+                <form action="<%=session_url%>" method= "post">
+                  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                  <input type="hidden" name = "_method" value= "delete">
+                  <input type="submit" value="Log-out">
+              </form>
+            </li>
+          <% else %>
+        
+            <li>
+                <form action="<%=new_session_url%>" method= "get">
+                    <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                    <%# <input type="hidden" name = "_method" value= "delete"> %>
+                    <input type="submit" value="Log-in">
+                </form>
+            </li>
+
+            <li>
+              <form action="<%=new_user_url%>" method= "get">
+                  <%# <input type="hidden" name = "_method" value= "delete"> %>
+                  <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+                  <input type="submit" value="Sign-Up">
+              </form>      
+            </li>
+          <% end%>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>

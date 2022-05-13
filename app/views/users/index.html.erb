@@ -4,8 +4,8 @@
 <% @users.each do |user| %>
 
     <li>
-        <img src="<%= user.picture_url %>" alt="<%= user.username %>">
-        <a href="<%= user_url(@user)  %>"><%= user.username %></a>
+        <img src="<%= user.picture_url %>" alt="<%= user.username %>" id="profile_pic">
+        <a href="<%= user_url(user)  %>"><%= user.username %></a>
     </li>
     <br>
 <% end %>

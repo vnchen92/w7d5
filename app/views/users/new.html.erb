@@ -1,0 +1,29 @@
+
+
+<h1>Create a New User</h1>
+
+<form action="<%=users_url%>" method="post">
+      <input type="hidden" name="authenticity_token" value="form_authenticity_token">
+      
+      <label for="username">Username</label>
+      <input type="text" name="user[username]" value="">
+
+      <br>
+
+      <label for="password">Password</label>
+      <input type="password" name="user[password]">
+
+      <br>
+
+      <label for="picture_url">Picture</label>
+      <input type="text" name="user[picture_url]">
+      
+      <br>
+
+      <label for="birthdate">Birth Date</label>
+      <input type="date" name="user[birthdate]">
+
+      <br>
+
+      <button>Submit</button>
+</form>
